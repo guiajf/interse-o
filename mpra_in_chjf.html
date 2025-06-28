@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_44074f33b42cc5def7f782b2c437fbae {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+     <div style="position: fixed; 
+     bottom: 50px; right: 50px; width: 150px; height: 90px; 
+     border:2px solid grey; z-index:9999; font-size:14px;
+     background-color:white;
+     ">
+     &nbsp; <b>Legenda</b> <br>
+     &nbsp; <i class="fa fa-home" style="color:green"></i>&nbsp; Dentro <br>
+     &nbsp; <i class="fa fa-info-circle" style="color:red"></i>&nbsp; Fora <br>
+     &nbsp; <i class="fa fa-map" style="color:blue"></i>&nbsp; Centro Histórico
+     </div>
+     
+    
+            <div class="folium-map" id="map_44074f33b42cc5def7f782b2c437fbae" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_44074f33b42cc5def7f782b2c437fbae = L.map(
+                "map_44074f33b42cc5def7f782b2c437fbae",
+                {
+                    center: [-21.761874435714287, -43.34581435714286],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3a801f96d0f2d66847bc2a601e305c41 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3a801f96d0f2d66847bc2a601e305c41.addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var polygon_dc56dbf0f3a345e9385d9f3a7c17e96f = L.polygon(
+                [[-21.762281043001835, -43.34016652775217], [-21.753233459476547, -43.351362572075494], [-21.753639557293926, -43.352186110828214], [-21.75221027520308, -43.35293251378737], [-21.752414458261512, -43.353238788656014], [-21.753757529707904, -43.35238575673133], [-21.754091028762748, -43.35310493520417], [-21.75773825072305, -43.352207947099004], [-21.757812692768333, -43.35256952148563], [-21.75756100908489, -43.353168600600966], [-21.758277067755575, -43.354157612890276], [-21.75783041668798, -43.35219376769888], [-21.760788237237197, -43.35139206518308], [-21.760940240650374, -43.35206813839776], [-21.761759241939266, -43.35184580552671], [-21.762217519769386, -43.35369933505048], [-21.76231053597393, -43.35367211067517], [-21.76171386749516, -43.351158388857264], [-21.764545464282058, -43.350441727160124]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            polygon_dc56dbf0f3a345e9385d9f3a7c17e96f.bindTooltip(
+                `<div>
+                     Centro Histórico de Juiz de Fora
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_5cad2b79c4157a54743766a0a468ea43 = L.marker(
+                [-21.7616, -43.349999],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_a6f9107b13bc9a37828cb9036f2e6d20 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e4d5c68d6b3fbeb6c92280a17905a333 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a311093fcfa30ebb6b39126b5268d0f1 = $(`<div id="html_a311093fcfa30ebb6b39126b5268d0f1" style="width: 100.0%; height: 100.0%;"><b>Paço Municipal</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_e4d5c68d6b3fbeb6c92280a17905a333.setContent(html_a311093fcfa30ebb6b39126b5268d0f1);
+            
+        
+
+        marker_5cad2b79c4157a54743766a0a468ea43.bindPopup(popup_e4d5c68d6b3fbeb6c92280a17905a333)
+        ;
+
+        
+    
+    
+            marker_5cad2b79c4157a54743766a0a468ea43.bindTooltip(
+                `<div>
+                     Paço Municipal
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5cad2b79c4157a54743766a0a468ea43.setIcon(icon_a6f9107b13bc9a37828cb9036f2e6d20);
+            
+    
+            var marker_c4889752bd9a1d79ce9c2e5f8f1596ff = L.marker(
+                [-21.7608312, -43.3496202],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_6261c48853d2c11466557554334ee30c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f8f124e1440053e071eb760bff4aee46 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1fba796bce60dc609d385545ac0624fe = $(`<div id="html_1fba796bce60dc609d385545ac0624fe" style="width: 100.0%; height: 100.0%;"><b>ED. CIAMPI</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_f8f124e1440053e071eb760bff4aee46.setContent(html_1fba796bce60dc609d385545ac0624fe);
+            
+        
+
+        marker_c4889752bd9a1d79ce9c2e5f8f1596ff.bindPopup(popup_f8f124e1440053e071eb760bff4aee46)
+        ;
+
+        
+    
+    
+            marker_c4889752bd9a1d79ce9c2e5f8f1596ff.bindTooltip(
+                `<div>
+                     ED. CIAMPI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c4889752bd9a1d79ce9c2e5f8f1596ff.setIcon(icon_6261c48853d2c11466557554334ee30c);
+            
+    
+            var marker_123d25e6f514ea981d28bc47dee86208 = L.marker(
+                [-21.7606305, -43.3484793],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_8a716cd23c780ca590c1776000b850cb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3bae365258183c936333ec8fabedebb6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_847393c687fea564856602dddaa36d51 = $(`<div id="html_847393c687fea564856602dddaa36d51" style="width: 100.0%; height: 100.0%;"><b>Galeria Pio X</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_3bae365258183c936333ec8fabedebb6.setContent(html_847393c687fea564856602dddaa36d51);
+            
+        
+
+        marker_123d25e6f514ea981d28bc47dee86208.bindPopup(popup_3bae365258183c936333ec8fabedebb6)
+        ;
+
+        
+    
+    
+            marker_123d25e6f514ea981d28bc47dee86208.bindTooltip(
+                `<div>
+                     Galeria Pio X
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_123d25e6f514ea981d28bc47dee86208.setIcon(icon_8a716cd23c780ca590c1776000b850cb);
+            
+    
+            var marker_01e4b811cc6f8ae08d115386695733e1 = L.marker(
+                [-21.7615775, -43.3478918],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_386e9b37e92bc4bcba5204ec6c270d5d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5ae41473873301e9628bc585fa78c0a3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74bb28b2ba401820d7f2ecb439a011b4 = $(`<div id="html_74bb28b2ba401820d7f2ecb439a011b4" style="width: 100.0%; height: 100.0%;"><b>Cine Theatro Central</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_5ae41473873301e9628bc585fa78c0a3.setContent(html_74bb28b2ba401820d7f2ecb439a011b4);
+            
+        
+
+        marker_01e4b811cc6f8ae08d115386695733e1.bindPopup(popup_5ae41473873301e9628bc585fa78c0a3)
+        ;
+
+        
+    
+    
+            marker_01e4b811cc6f8ae08d115386695733e1.bindTooltip(
+                `<div>
+                     Cine Theatro Central
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_01e4b811cc6f8ae08d115386695733e1.setIcon(icon_386e9b37e92bc4bcba5204ec6c270d5d);
+            
+    
+            var marker_29af181362a709e779ec557ea5c81bb3 = L.marker(
+                [-21.7608331, -43.3468349],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_328a7ee1d9159b8148d0958f2a40050c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9b7fef5f803561bb89eddb9172bc5093 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d6c092dc87eb29bb47f359744a2bdf25 = $(`<div id="html_d6c092dc87eb29bb47f359744a2bdf25" style="width: 100.0%; height: 100.0%;"><b>Palacete Pinho</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_9b7fef5f803561bb89eddb9172bc5093.setContent(html_d6c092dc87eb29bb47f359744a2bdf25);
+            
+        
+
+        marker_29af181362a709e779ec557ea5c81bb3.bindPopup(popup_9b7fef5f803561bb89eddb9172bc5093)
+        ;
+
+        
+    
+    
+            marker_29af181362a709e779ec557ea5c81bb3.bindTooltip(
+                `<div>
+                     Palacete Pinho
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_29af181362a709e779ec557ea5c81bb3.setIcon(icon_328a7ee1d9159b8148d0958f2a40050c);
+            
+    
+            var marker_f9178d056c7b6f35457d117c8059e527 = L.marker(
+                [-21.7601146, -43.3448549],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_6c6cc0d11b89dc7ce0702788f3998ce2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_908a5b659fbc43b1450b365c124ec036 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5057b162cfd64aec7518f59b02c8203e = $(`<div id="html_5057b162cfd64aec7518f59b02c8203e" style="width: 100.0%; height: 100.0%;"><b>Cia. Dias Cardoso</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_908a5b659fbc43b1450b365c124ec036.setContent(html_5057b162cfd64aec7518f59b02c8203e);
+            
+        
+
+        marker_f9178d056c7b6f35457d117c8059e527.bindPopup(popup_908a5b659fbc43b1450b365c124ec036)
+        ;
+
+        
+    
+    
+            marker_f9178d056c7b6f35457d117c8059e527.bindTooltip(
+                `<div>
+                     Cia. Dias Cardoso
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f9178d056c7b6f35457d117c8059e527.setIcon(icon_6c6cc0d11b89dc7ce0702788f3998ce2);
+            
+    
+            var marker_eb4e645742222dcf8bbb0e30d14ad3bd = L.marker(
+                [-21.7599733, -43.3440394],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_57ad8e182f2aae75b5bc90c95a6dd9c2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_178ac7228c9612167ba5c96b3a5e122a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ff33a81ec7254dbfebb4c1ae7c523251 = $(`<div id="html_ff33a81ec7254dbfebb4c1ae7c523251" style="width: 100.0%; height: 100.0%;"><b>Hotel Príncipe</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_178ac7228c9612167ba5c96b3a5e122a.setContent(html_ff33a81ec7254dbfebb4c1ae7c523251);
+            
+        
+
+        marker_eb4e645742222dcf8bbb0e30d14ad3bd.bindPopup(popup_178ac7228c9612167ba5c96b3a5e122a)
+        ;
+
+        
+    
+    
+            marker_eb4e645742222dcf8bbb0e30d14ad3bd.bindTooltip(
+                `<div>
+                     Hotel Príncipe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eb4e645742222dcf8bbb0e30d14ad3bd.setIcon(icon_57ad8e182f2aae75b5bc90c95a6dd9c2);
+            
+    
+            var marker_9ad882af5dd3ba7c40e716490959eba8 = L.marker(
+                [-21.7597099, -43.3441725],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_df0573dc29971e456b3d9ff37bc11421 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_904a6537eaf327a032c81b654f947bd0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6387b9134c197aae74a29d0735f68b1c = $(`<div id="html_6387b9134c197aae74a29d0735f68b1c" style="width: 100.0%; height: 100.0%;"><b>Associação Comercial</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_904a6537eaf327a032c81b654f947bd0.setContent(html_6387b9134c197aae74a29d0735f68b1c);
+            
+        
+
+        marker_9ad882af5dd3ba7c40e716490959eba8.bindPopup(popup_904a6537eaf327a032c81b654f947bd0)
+        ;
+
+        
+    
+    
+            marker_9ad882af5dd3ba7c40e716490959eba8.bindTooltip(
+                `<div>
+                     Associação Comercial
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9ad882af5dd3ba7c40e716490959eba8.setIcon(icon_df0573dc29971e456b3d9ff37bc11421);
+            
+    
+            var marker_5c02cbab968f422c0918898ad5a842d6 = L.marker(
+                [-21.762536, -43.342788],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_d01eba585537e4eb2e53bfa2ce548ef1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2ee7f6802402a359784ff796f6f90728 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7d35d8e6329f3d040a1d5bfdd44a8ca7 = $(`<div id="html_7d35d8e6329f3d040a1d5bfdd44a8ca7" style="width: 100.0%; height: 100.0%;"><b>Cia. Pantaleone Arcuri</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_2ee7f6802402a359784ff796f6f90728.setContent(html_7d35d8e6329f3d040a1d5bfdd44a8ca7);
+            
+        
+
+        marker_5c02cbab968f422c0918898ad5a842d6.bindPopup(popup_2ee7f6802402a359784ff796f6f90728)
+        ;
+
+        
+    
+    
+            marker_5c02cbab968f422c0918898ad5a842d6.bindTooltip(
+                `<div>
+                     Cia. Pantaleone Arcuri
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c02cbab968f422c0918898ad5a842d6.setIcon(icon_d01eba585537e4eb2e53bfa2ce548ef1);
+            
+    
+            var marker_6b396a132c0e24df1acaa70b472d59c3 = L.marker(
+                [-21.763336, -43.344481],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_1f0ecc13fd5abc0bf12b04573a3ded9a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_257596a2af0ef06bfafd033009cdc7f8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_60a8c5fb77994b5bb1b73daf8ba91e3f = $(`<div id="html_60a8c5fb77994b5bb1b73daf8ba91e3f" style="width: 100.0%; height: 100.0%;"><b>Vila Iracema</b><br>Status: Fora do Centro Histórico</div>`)[0];
+                popup_257596a2af0ef06bfafd033009cdc7f8.setContent(html_60a8c5fb77994b5bb1b73daf8ba91e3f);
+            
+        
+
+        marker_6b396a132c0e24df1acaa70b472d59c3.bindPopup(popup_257596a2af0ef06bfafd033009cdc7f8)
+        ;
+
+        
+    
+    
+            marker_6b396a132c0e24df1acaa70b472d59c3.bindTooltip(
+                `<div>
+                     Vila Iracema
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6b396a132c0e24df1acaa70b472d59c3.setIcon(icon_1f0ecc13fd5abc0bf12b04573a3ded9a);
+            
+    
+            var marker_8a3da0c0f53a5d1c1e691d1a71d12be7 = L.marker(
+                [-21.76328, -43.345717],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_13a4bb8020aa4787b963f29656f9f390 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2f81d60cf14d94595c5487f502df3cb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d98d6df8e3e7f309170d531a71a5a4ca = $(`<div id="html_d98d6df8e3e7f309170d531a71a5a4ca" style="width: 100.0%; height: 100.0%;"><b>Palacete dos Fellet</b><br>Status: Dentro do Centro Histórico</div>`)[0];
+                popup_c2f81d60cf14d94595c5487f502df3cb.setContent(html_d98d6df8e3e7f309170d531a71a5a4ca);
+            
+        
+
+        marker_8a3da0c0f53a5d1c1e691d1a71d12be7.bindPopup(popup_c2f81d60cf14d94595c5487f502df3cb)
+        ;
+
+        
+    
+    
+            marker_8a3da0c0f53a5d1c1e691d1a71d12be7.bindTooltip(
+                `<div>
+                     Palacete dos Fellet
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8a3da0c0f53a5d1c1e691d1a71d12be7.setIcon(icon_13a4bb8020aa4787b963f29656f9f390);
+            
+    
+            var marker_f81f02e1cf421b89d80964dba8558ea5 = L.marker(
+                [-21.763699, -43.342097],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_05882f8da58d6b3821111fc3cd370bcb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f17d356f605efe415475415730b65ba7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c333d2a57961309ff4811221e018c73e = $(`<div id="html_c333d2a57961309ff4811221e018c73e" style="width: 100.0%; height: 100.0%;"><b>Residência Raphael Arcuri</b><br>Status: Fora do Centro Histórico</div>`)[0];
+                popup_f17d356f605efe415475415730b65ba7.setContent(html_c333d2a57961309ff4811221e018c73e);
+            
+        
+
+        marker_f81f02e1cf421b89d80964dba8558ea5.bindPopup(popup_f17d356f605efe415475415730b65ba7)
+        ;
+
+        
+    
+    
+            marker_f81f02e1cf421b89d80964dba8558ea5.bindTooltip(
+                `<div>
+                     Residência Raphael Arcuri
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f81f02e1cf421b89d80964dba8558ea5.setIcon(icon_05882f8da58d6b3821111fc3cd370bcb);
+            
+    
+            var marker_715f48b2eb7141cef0afa8430ab8ffb9 = L.marker(
+                [-21.763666, -43.341959],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_c89eca98f77e97e336ed82b4dcfca21e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b75266b13f3974ec1e029071323aeed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_30d1628e624d937fa49bb9c7e336cbda = $(`<div id="html_30d1628e624d937fa49bb9c7e336cbda" style="width: 100.0%; height: 100.0%;"><b>Castelinho dos Bracher</b><br>Status: Fora do Centro Histórico</div>`)[0];
+                popup_8b75266b13f3974ec1e029071323aeed.setContent(html_30d1628e624d937fa49bb9c7e336cbda);
+            
+        
+
+        marker_715f48b2eb7141cef0afa8430ab8ffb9.bindPopup(popup_8b75266b13f3974ec1e029071323aeed)
+        ;
+
+        
+    
+    
+            marker_715f48b2eb7141cef0afa8430ab8ffb9.bindTooltip(
+                `<div>
+                     Castelinho dos Bracher
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_715f48b2eb7141cef0afa8430ab8ffb9.setIcon(icon_c89eca98f77e97e336ed82b4dcfca21e);
+            
+    
+            var marker_8d4bc1ff1c6788f01d376086746c53db = L.marker(
+                [-21.764455, -43.348467],
+                {
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+    
+            var icon_5898591d62217c21a72e77e00cdf91f6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8d36b2cb35d0b5985cb1efbe772da0b5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9ec26a27f8b8d40c77d23581c8e39dbf = $(`<div id="html_9ec26a27f8b8d40c77d23581c8e39dbf" style="width: 100.0%; height: 100.0%;"><b>Casa D'Itália</b><br>Status: Fora do Centro Histórico</div>`)[0];
+                popup_8d36b2cb35d0b5985cb1efbe772da0b5.setContent(html_9ec26a27f8b8d40c77d23581c8e39dbf);
+            
+        
+
+        marker_8d4bc1ff1c6788f01d376086746c53db.bindPopup(popup_8d36b2cb35d0b5985cb1efbe772da0b5)
+        ;
+
+        
+    
+    
+            marker_8d4bc1ff1c6788f01d376086746c53db.bindTooltip(
+                `<div>
+                     Casa D'Itália
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8d4bc1ff1c6788f01d376086746c53db.setIcon(icon_5898591d62217c21a72e77e00cdf91f6);
+            
+    
+            L.control.fullscreen(
+                {
+  "position": "bottomleft",
+  "title": "Expandir",
+  "titleCancel": "Sair",
+  "forceSeparateButton": true,
+}
+            ).addTo(map_44074f33b42cc5def7f782b2c437fbae);
+        
+</script>
+</html>
