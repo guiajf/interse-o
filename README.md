@@ -160,6 +160,8 @@ legend_html = '''
      '''
 mapa.get_root().html.add_child(folium.Element(legend_html))
 
+mapa.save("mpra_in_chjf.html")
+
 mapa
 ```
 ![](mpra_in_chjf.png)
