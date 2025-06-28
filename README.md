@@ -1,4 +1,4 @@
-## Mapa e Memória: Museu de Percurso Raphael Arcuri e o Centro Histórico de JF
+## Mapa e Memória: Raphael Arcuri e o Centro Histórico de JF
 
 ### Introdução
 
