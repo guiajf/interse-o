@@ -174,6 +174,8 @@ visualizar a relação entre o **Museu de Percurso Raphael Arcuri** e o
 e geográficos não só enriquece nossa compreensão do patrimônio cultural,
 mas também apoia tomadas de decisão mais embasadas.
 
+Baixe o arquivo *mpra_in_chjf.hmtl*, para visualizar o mapa interativo no navegador da sua preferência.
+
 
 
 **Referências**
