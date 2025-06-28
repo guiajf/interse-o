@@ -14,7 +14,7 @@ Arcuri](https://www.instagram.com/museuraphaelarcuri?igsh=MWRjNWV1cnZnczE5aQ==),
 idealizado por [Letícia
 Rabelo](https://www.instagram.com/leticiarabelo.arq?igsh=dndsYTdsemM4ZWdw),
 ganha ainda mais relevância quando analisado em conjunto com o Decreto
-Municipal Nº 17.025/2025, que estabelece os limites oficiais do **Centro
+Municipal 17.025/2025, que estabelece os limites oficiais do **Centro
 Histórico**. Este decreto, publicado em janeiro de 2025, visa não apenas
 preservar o patrimônio histórico, mas também impulsionar o comércio
 local e o turismo na região.
