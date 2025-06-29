@@ -3,7 +3,7 @@
 ### Introdução
 
 Os dados vetoriais permitem representar objetos geográficos de forma
-precisa e estruturada. Como exemplo, utilizamos dois temas já tratados
+precisa e estruturada. Como exemplo, utilizamos dois objetos já tratados
 anteriormente: o **Museu de Percurso Raphael Arcuri** e o **Centro
 Histórico** da cidade de Juiz de Fora, em Minas Gerais, cada um
 representado por entidades geométricas distintas -- pontos e polígonos,
