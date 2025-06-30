@@ -132,7 +132,7 @@ for idx, row in df_obras.iterrows():
     
     folium.Marker(
         location=[row['latitude'], row['longitude']],
-        popup=f"<b>{row['obra']}</b><br>Status: {'Dentro' if row['dentro'] else 'Fora'} do Centro Histórico",
+        popup=f"<b><br>Status:</b> {'Dentro' if row['dentro'] else 'Fora'} do Centro Histórico",
         tooltip=row['obra'],
         icon=icon
     ).add_to(mapa)
