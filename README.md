@@ -1,4 +1,4 @@
-## Mapa e memória: o percurso de Raphael Arcuri no centro histórico de JF
+## Memória mapeada: o percurso de Raphael Arcuri no centro histórico de JF
 
 ### Introdução
 
